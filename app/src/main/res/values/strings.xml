@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">AVA YADL</string>
+    <string name="hi_welcome_to_yadl">Hi! 👋👋 Welcome to YADL</string>
+    <string name="start">Start</string>
+</resources>

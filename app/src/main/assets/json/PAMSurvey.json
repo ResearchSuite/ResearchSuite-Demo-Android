@@ -1,0 +1,25 @@
+{
+  "type": "recurring",
+  "identifier": "PAM",
+  "title": "PAM",
+  "guid": "PAM",
+  "activity": {
+    "type"      : "elementList",
+    "identifier": "pam",
+    "elements"   : [
+      {
+        "identifier"   : "PAM",
+        "type"         : "PAM",
+        "optional":true
+      },
+      {
+        "identifier"   : "results",
+        "type"         : "instruction",
+        "title"        : "Thanks!",
+        "text"         : ""
+      }
+    ]
+  },
+  "resultTransforms": [
+  ]
+}

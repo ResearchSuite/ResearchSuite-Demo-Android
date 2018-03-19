@@ -1,0 +1,107 @@
+{
+  "type": "recurring",
+  "identifier": "demobraphics",
+  "title": "Demographics",
+  "guid": "demographics",
+  "activity": {
+    "type"      : "elementList",
+    "identifier": "demographics_list",
+    "elements"   : [
+      {
+        "identifier": "gender",
+        "type": "singleChoiceText",
+        "text": "What is your gender?",
+        "items": [
+          {
+            "prompt": "Female",
+            "value": "female"
+          },
+          {
+            "prompt": "Male",
+            "value": "male"
+          },
+          {
+            "prompt": "Transgender",
+            "value": "transgender"
+          },
+          {
+            "prompt": "Other",
+            "value": "other"
+          }
+        ]
+      },
+      {
+        "identifier": "age",
+        "type": "numericInteger",
+        "text": "What is your age?",
+        "range": {
+          "min": 18,
+          "max": 99,
+          "unitLabel": "years"
+        }
+      },
+      {
+        "identifier": "zip_code",
+        "type": "textfield",
+        "text": "What is your zip code?",
+        "validationRegex": "^[0-9]{5}$",
+        "invalidMessage": "Please enter a valid zip code."
+      },
+      {
+        "identifier": "employment_income",
+        "type": "multipleChoiceText",
+        "text": "Which best describes your current employment status? Check all that apply.",
+        "items": [
+          {
+            "prompt": "Part-time",
+            "value": "Part-time"
+          },
+          {
+            "prompt": "Full-time",
+            "value": "Full-time"
+          },
+          {
+            "prompt": "Contracted/consultant",
+            "value": "Contracted_consultant"
+          },
+          {
+            "prompt": "Homemaker",
+            "value": "Homemaker"
+          },
+          {
+            "prompt": "Self-employed",
+            "value": "Self-employed"
+          },
+          {
+            "prompt": "Student",
+            "value": "Student"
+          },
+          {
+            "prompt": "Military",
+            "value": "Military"
+          },
+          {
+            "prompt": "Retired",
+            "value": "Retired"
+          },
+          {
+            "prompt": "Unemployed",
+            "value": "Unemployed"
+          },
+          {
+            "prompt": "Public assistance/social security",
+            "value": "Public assistance"
+          },
+          {
+            "prompt": "Other",
+            "value": "Other"
+          }
+
+        ]
+      }
+    ]
+  },
+  "resultTransforms": []
+}
+
+
