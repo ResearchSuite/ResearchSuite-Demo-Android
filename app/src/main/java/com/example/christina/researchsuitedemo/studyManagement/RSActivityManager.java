@@ -10,12 +10,17 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.christina.researchsuitedemo.notification.NotificationTime;
+import com.example.christina.researchsuitedemo.notification.TaskAlertReceiver;
+
 import org.researchstack.backbone.ResourcePathManager;
+import org.researchstack.backbone.result.StepResult;
 import org.researchstack.backbone.result.TaskResult;
 import org.researchstack.backbone.step.Step;
 import org.researchstack.backbone.task.OrderedTask;
 import org.researchstack.backbone.task.Task;
 
+import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
 import java.util.UUID;
@@ -160,7 +165,19 @@ public class RSActivityManager {
 
         assert(activityRun != null);
 
+        if (activityRun.identifier.equals("notification_date")) {
+            StepResult stepResult = taskResult.getStepResult("notification_time_picker");
+            if (stepResult != null) {
+                long notificationTimeInMS = (long) stepResult.getResult();
+                Calendar notificationCalendar = Calendar.getInstance();
+                notificationCalendar.setTimeInMillis(notificationTimeInMS);
 
+                NotificationTime notificationTime = new NotificationTime(context);
+                notificationTime.setNotificationTime(notificationCalendar.get(Calendar.HOUR_OF_DAY), notificationCalendar.get(Calendar.MINUTE));
+
+                context.sendBroadcast(TaskAlertReceiver.createSetNotificationIntent());
+            }
+        }
 
         RSResultsProcessorManager.getResultsProcessor().processResult(
                 context,

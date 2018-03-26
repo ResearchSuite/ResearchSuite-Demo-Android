@@ -21,5 +21,17 @@
     ]
   },
   "resultTransforms": [
+    {
+      "transform": "PAMRaw",
+      "inputMapping": [
+        {"parameter":"result", "stepIdentifier":"PAM"},
+        {"parameter": "schemaID", "constant":{
+          "namespace": "Cornell",
+          "name": "photographic-affect-meter-scores",
+          "version": "1.0"
+        }
+        }
+      ]
+    }
   ]
 }

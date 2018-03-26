@@ -22,10 +22,15 @@ allprojects {
     repositories {
         google()
         jcenter()
-        maven { url "https://jitpack.io" }
-        maven { url "https://dl.bintray.com/edu-cornell-tech-foundry/SDLRSX" }
-        maven { url "https://dl.bintray.com/researchstack/ResearchStack" }
+        maven { url 'https://jitpack.io' }
+        // for MPAndroidChard
+
+        maven { url 'https://dl.bintray.com/curiosityhealth/maven' }
+        maven { url 'https://dl.bintray.com/edu-cornell-tech-foundry/SDLRSX' }
+        maven { url 'https://dl.bintray.com/researchstack/ResearchStack' }
+        maven { url 'https://dl.bintray.com/org-researchsuite/maven/' }
         maven { url "https://dl.bintray.com/edu-cornell-tech-foundry/ResearchSuiteAppFramework" }
+        //        mavenLocal()
     }
 }
 

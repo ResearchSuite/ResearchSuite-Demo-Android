@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.UUID;
 
-import edu.cornell.tech.foundry.researchsuiteresultprocessor.RSRPResultTransform;
+import org.researchsuite.rsrp.RSRPResultTransform;
 
 /**
  * Created by jameskizer on 3/7/17.

@@ -4,7 +4,7 @@ import com.google.gson.JsonElement;
 
 import java.util.List;
 
-import edu.cornell.tech.foundry.researchsuiteresultprocessor.RSRPResultTransform;
+import org.researchsuite.rsrp.RSRPResultTransform;
 
 /**
  * Created by jameskizer on 1/19/17.

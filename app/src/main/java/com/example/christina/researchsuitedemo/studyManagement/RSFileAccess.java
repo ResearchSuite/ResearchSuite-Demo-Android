@@ -17,14 +17,15 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import edu.cornell.tech.foundry.ohmageomhsdk.OhmageOMHSDKCredentialStore;
-import edu.cornell.tech.foundry.researchsuitetaskbuilder.RSTBStateHelper;
+
+import org.researchsuite.rstb.RSTBStateHelper;
+import org.researchsuite.rsuiteextensionscore.RSCredentialStore;
 
 /**
  * Created by jameskizer on 4/12/17.
  */
 
-public class RSFileAccess extends SimpleFileAccess implements RSTBStateHelper, OhmageOMHSDKCredentialStore {
+public class RSFileAccess extends SimpleFileAccess implements RSTBStateHelper, RSCredentialStore {
 
     private String pathName;
 
@@ -101,6 +102,10 @@ public class RSFileAccess extends SimpleFileAccess implements RSTBStateHelper, O
         }
     }
 
+    @Override
+    public boolean has(Context context, String key) {
+        return false;
+    }
 
 
     private void setDateInState(Context context, String key, Date date) {

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <Preference
+        android:key="yadl_full_assessment"
+        android:title="Take YADL Full Assessment"/>
+
+    <Preference
+        android:key="yadl_spot_assessment"
+        android:title="Take YADL Spot Assessment"/>
+
+    <Preference
+        android:key="pam_assessment"
+        android:title="Take PAM Assessment"/>
+
+    <Preference
+        android:key="demographics_assessment"
+        android:title="Take Demographics Assessment"/>
+
+    <Preference
+        android:key="set_notification_time"
+        android:title="Set Notification Time"/>
+
+    <Preference
+        android:key="participant_since"
+        android:title="@string/participant_since"/>
+
+    <Preference
+        android:key="sign_out"
+        android:title="Sign Out"/>
+
+
+
+</PreferenceScreen>

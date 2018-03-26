@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.christina.researchsuitedemo">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
 
     <application
@@ -12,7 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.example.christina.researchsuitedemo.OnboardingActivity">
+        <activity android:name="com.example.christina.researchsuitedemo.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,16 +27,54 @@
             android:windowSoftInputMode="adjustResize" />
 
         <activity
+            android:name="com.example.christina.researchsuitedemo.SettingsActivity"
+            android:label="settings"
+            android:theme="@style/Theme.RS.Settings" />
+
+        <activity
             android:name="com.example.christina.researchsuitedemo.MainActivity"
             android:label="@string/app_name"
-            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+
+
+        <activity
+            android:name="com.example.christina.researchsuitedemo.OnboardingActivity"
+            android:label="@string/app_name"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="com.example.christina.researchsuitedemo.SettingsActivity"
+            android:name="com.example.christina.researchsuitedemo.LoginActivity"
             android:label="@string/app_name"
-            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
+
+        <receiver
+            android:name=".notification.TaskNotificationReceiver"
+            android:enabled="true"
+            android:exported="false"
+            />
+
+        <receiver
+            android:name=".notification.TaskAlertReceiver"
+            android:enabled="true"
+            android:exported="false"
+            >
+
+            <intent-filter>
+                <action android:name="edu.cornell.tech.foundry.yadl.notification.ALERT_CREATE_FROM_STATE"/>
+            </intent-filter>
+
+        </receiver>
+
+        <receiver
+            android:name=".notification.DeviceBootReceiver"
+            android:enabled="true"
+            android:exported="false"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+
 
 
 

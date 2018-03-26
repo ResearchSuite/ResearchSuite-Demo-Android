@@ -1,6 +1,6 @@
 {
   "type": "recurring",
-  "identifier": "demobraphics",
+  "identifier": "demographics",
   "title": "Demographics",
   "guid": "demographics",
   "activity": {
@@ -46,62 +46,39 @@
         "text": "What is your zip code?",
         "validationRegex": "^[0-9]{5}$",
         "invalidMessage": "Please enter a valid zip code."
-      },
-      {
-        "identifier": "employment_income",
-        "type": "multipleChoiceText",
-        "text": "Which best describes your current employment status? Check all that apply.",
-        "items": [
-          {
-            "prompt": "Part-time",
-            "value": "Part-time"
-          },
-          {
-            "prompt": "Full-time",
-            "value": "Full-time"
-          },
-          {
-            "prompt": "Contracted/consultant",
-            "value": "Contracted_consultant"
-          },
-          {
-            "prompt": "Homemaker",
-            "value": "Homemaker"
-          },
-          {
-            "prompt": "Self-employed",
-            "value": "Self-employed"
-          },
-          {
-            "prompt": "Student",
-            "value": "Student"
-          },
-          {
-            "prompt": "Military",
-            "value": "Military"
-          },
-          {
-            "prompt": "Retired",
-            "value": "Retired"
-          },
-          {
-            "prompt": "Unemployed",
-            "value": "Unemployed"
-          },
-          {
-            "prompt": "Public assistance/social security",
-            "value": "Public assistance"
-          },
-          {
-            "prompt": "Other",
-            "value": "Other"
-          }
-
-        ]
       }
     ]
   },
-  "resultTransforms": []
+    "resultTransforms":[
+    {
+    "transform":"DemographicsSurvey",
+    "inputMapping":[
+      {
+        "stepIdentifier":"gender",
+        "parameter":"gender"
+      },
+      {
+        "stepIdentifier":"age",
+        "parameter":"age"
+      },
+      {
+        "stepIdentifier":"zip_code",
+        "parameter":"zip_code"
+      },
+      {
+        "parameter": "schemaID",
+        "constant": {
+          "namespace": "Cornell",
+          "name": "rs-survey",
+          "version": "2.0.0"
+        }
+      }
+    ]
+    }
+    ]
+
 }
+
+
 
 

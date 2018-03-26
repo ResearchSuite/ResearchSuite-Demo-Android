@@ -2,8 +2,8 @@ package com.example.christina.researchsuitedemo.studyManagement;
 
 import android.support.annotation.NonNull;
 
-import edu.cornell.tech.foundry.researchsuiteresultprocessor.RSRPBackEnd;
-import edu.cornell.tech.foundry.researchsuiteresultprocessor.RSRPResultsProcessor;
+import org.researchsuite.rsrp.RSRPBackEnd;
+import org.researchsuite.rsrp.RSRPResultsProcessor;
 
 import static com.google.common.base.Preconditions.checkState;
 

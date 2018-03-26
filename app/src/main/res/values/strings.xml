@@ -1,5 +1,13 @@
 <resources>
-    <string name="app_name">AVA YADL</string>
-    <string name="hi_welcome_to_yadl">Hi! 👋👋 Welcome to YADL</string>
+    <string name="app_name">RS Demo</string>
+    <string name="hi_welcome_to_rsuite">Hi! 👋👋 Welcome to ResearchSuite!</string>
     <string name="start">Start</string>
+    <string name="settings_item_title">Settings</string>
+    <string name="set_notification_time">Set Notification Time</string>
+    <string name="participant_since">Participant Since</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="version_info">Version Information</string>
+    <string name="settings_version">Version %1$s (Build %2$d) %3$s</string>
+    <string name="settings_version_unknown">Version Unknown</string>
+    <string name="splash_page">You\'ll be notified when it\'s time for your next survey</string>
 </resources>

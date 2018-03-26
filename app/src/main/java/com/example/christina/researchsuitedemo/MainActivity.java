@@ -1,5 +1,6 @@
 package com.example.christina.researchsuitedemo;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -13,6 +14,7 @@ import static android.view.MenuItem.SHOW_AS_ACTION_ALWAYS;
 public class MainActivity extends RSActivity {
 
     public static final int SHOW_AS_ACTION_ALWAYS = 2;
+    public static final int SHOW_AS_ACTION_IF_ROOM = 4;
     private static final int REQUEST_SETTINGS = 0xff31;
 
     @Override
@@ -20,14 +22,14 @@ public class MainActivity extends RSActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        RSActivityManager.get().queueActivity(this, "YADLFull", true);
-        RSActivityManager.get().queueActivity(this, "YADLSpot", true);
+        RSActivityManager.get().queueActivity(this, "PAMSurvey", true);
+        RSActivityManager.get().queueActivity(this, "YADLSpotSurvey", true);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
-        MenuItem menuItem = menu.add("settings");
+        MenuItem menuItem = menu.add("Settings");
         menuItem.setIcon(android.R.drawable.ic_menu_preferences);
         menuItem.setShowAsAction(SHOW_AS_ACTION_ALWAYS);
         menuItem.setIntent(new Intent(this, SettingsActivity.class));
@@ -46,5 +48,22 @@ public class MainActivity extends RSActivity {
 
         return super.onCreateOptionsMenu(menu);
 
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        if (resultCode == Activity.RESULT_OK) {
+
+            if (requestCode == REQUEST_SETTINGS) {
+                Boolean signedOut = (Boolean) data.getSerializableExtra(SettingsActivity.EXTRA_DID_SIGN_OUT);
+                if (signedOut) {
+                    startActivity(new Intent(this, SplashActivity.class));
+                    finish();
+                }
+                return;
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

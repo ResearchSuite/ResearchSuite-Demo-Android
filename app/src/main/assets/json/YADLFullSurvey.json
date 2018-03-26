@@ -80,11 +80,23 @@
     ]
   },
   "resultTransforms": [
-
-
-
-
-
-
+    {
+      "transform": "YADLFullRaw",
+      "inputMapping": [
+        {"parameter":"Eating", "stepIdentifier":"yadl_full.BedtoChair"},
+        {"parameter":"Bathing", "stepIdentifier":"yadl_full.Dressing"},
+        {"parameter":"Dressing", "stepIdentifier":"yadl_full.Housework"},
+        {"parameter":"Toilet", "stepIdentifier":"yadl_full.Lifting"},
+        {"parameter":"BedToChair", "stepIdentifier":"yadl_full.Shopping"},
+        {"parameter":"Shopping", "stepIdentifier":"yadl_full.ShortWalk"},
+        {"parameter":"Housework", "stepIdentifier":"yadl_full.Walkingupstairs"},
+        {"parameter": "schemaID", "constant":{
+          "namespace": "Cornell",
+          "name": "yadl-full-assessment",
+          "version": "2.0.0"
+        }
+        }
+      ]
+    }
   ]
 }

@@ -18,8 +18,8 @@
         "identifier": "yadl_spot",
         "type": "YADLSpotAssessment",
         "title": "Which activities did you have trouble with today?",
-        "somethingSelectedButtonColor":"#0080ff",
-        "nothingSelectedButtonColor":"#0080ff",
+        "somethingSelectedButtonColor":"#FF4081",
+        "nothingSelectedButtonColor":"#FF4081",
         "itemCellSelectedColor":"#7FEE7D",
         "itemCellSelectedOverlayImageTitle":"first_tab",
         "itemsPerRow":3,
@@ -74,6 +74,18 @@
     ]
   },
   "resultTransforms": [
+    {
+      "transform": "YADLSpotRaw",
+      "inputMapping": [
+        {"parameter":"result", "stepIdentifier":"yadl_spot"},
+        {"parameter": "schemaID", "constant":{
+          "namespace": "Cornell",
+          "name": "yadl-spot-assessment",
+          "version": "2.0.0"
+        }
+        }
+      ]
+    }
 
   ]
 

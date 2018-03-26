@@ -6,7 +6,11 @@ package com.example.christina.researchsuitedemo.studyManagement;
 
 import android.app.Application;
 import android.content.Context;
-import android.util.Log;
+
+import com.curiosityhealth.ls2sdk.core.manager.LS2Manager;
+import com.curiosityhealth.ls2sdk.rsrp.LS2ResultBackend;
+import com.curiosityhealth.ls2sdk.omh.OMHIntermediateResultTransformer;
+import com.example.christina.researchsuitedemo.R;
 
 import net.sqlcipher.database.SQLiteDatabase;
 
@@ -18,9 +22,12 @@ import org.researchstack.backbone.storage.database.sqlite.UpdatablePassphrasePro
 import org.researchstack.backbone.storage.file.UnencryptedProvider;
 import org.researchstack.skin.DataResponse;
 
-import edu.cornell.tech.foundry.ohmageomhbackend.ORBEOhmageResultBackEnd;
-import edu.cornell.tech.foundry.ohmageomhsdk.OhmageOMHManager;
-import edu.cornell.tech.foundry.researchsuiteresultprocessor.RSRPResultsProcessor;
+import com.example.christina.researchsuitedemo.resultManagement.OMHTransformer;
+import com.example.christina.researchsuitedemo.notification.NotificationTime;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import rx.Single;
 import rx.SingleSubscriber;
 
@@ -52,6 +59,13 @@ public class RSApplication extends Application {
                 createAppDatabaseImplementation(context)
         );
 
+        LS2Manager.config(context,
+                getString(R.string.ls2_base_url),
+                fileAccess,
+                getString(R.string.ls2_queue_directory)
+        );
+
+
         String directory = context.getApplicationInfo().dataDir;
 
 
@@ -66,14 +80,27 @@ public class RSApplication extends Application {
 
         RSResourcePathManager resourcePathManager = new RSResourcePathManager();
         ResourcePathManager.init(resourcePathManager);
-        //config task builder singleton
-        //task builder requires ResourceManager, ImpulsivityAppStateManager
+//        //config task builder singleton
+//        //task builder requires ResourceManager, ImpulsivityAppStateManager
         RSTaskBuilderManager.init(context, resourcePathManager, fileAccess);
+        LS2ResultBackend.config(LS2Manager.getInstance(), this.getOMHIntermediateResultTransformers());
+        RSResultsProcessorManager.init(LS2ResultBackend.getInstance());
+
+//
+//
+//        RSResultsProcessorManager.init(ORBEOhmageResultBackEnd.getInstance());
+//        RSRPResultsProcessor resultsProcessor = new RSRPResultsProcessor(ORBEOhmageResultBackEnd.getInstance());
+
+    }
+
+    public List<OMHIntermediateResultTransformer> getOMHIntermediateResultTransformers() {
+        ArrayList<OMHIntermediateResultTransformer> transformers = new ArrayList<>();
+
+        transformers.add(new OMHTransformer());
+      //  transformers.add(new YADLFullRawOMHTransformer());
 
 
-        RSResultsProcessorManager.init(ORBEOhmageResultBackEnd.getInstance());
-        RSRPResultsProcessor resultsProcessor = new RSRPResultsProcessor(ORBEOhmageResultBackEnd.getInstance());
-
+        return transformers;
     }
 
 
@@ -110,24 +137,27 @@ public class RSApplication extends Application {
         return Single.create(new Single.OnSubscribe<DataResponse>() {
             @Override
             public void call(final SingleSubscriber<? super DataResponse> singleSubscriber) {
-                OhmageOMHManager.getInstance().signOut(new OhmageOMHManager.Completion() {
+
+                LS2Manager.getInstance().signOut(new LS2Manager.Completion() {
                     @Override
                     public void onCompletion(Exception e) {
 
-                        Log.d("testing order: ","signed out");
                         RSFileAccess.getInstance().clearFileAccess(RSApplication.this);
 
+                        //clear notification, too!!
+                        NotificationTime notificationTime = new NotificationTime(RSApplication.this);
+                        notificationTime.setNotificationTime(null, null);
 
                         if (e != null) {
-                            Log.d("testing order: ","not signed out");
                             singleSubscriber.onError(e);
                         }
                         else {
-                            Log.d("testing order: ","signed out");
                             singleSubscriber.onSuccess(new DataResponse(true, "success"));
                         }
+
                     }
                 });
+
             }
         });
 

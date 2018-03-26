@@ -63,5 +63,11 @@
         <item name="android:divider">@null</item>
     </style>
 
+    <!--<style name="Theme.RS.Settings.Preference"-->
+        <!--parent="@style/PreferenceThemeOverlay.v14.Material">-->
+        <!--<item name="preferenceFragmentCompatStyle">@style/PreferenceFragment.RS</item>-->
+        <!--<item name="preferenceFragmentStyle">@style/PreferenceFragment.RS</item>-->
+    <!--</style>-->
+
 
 </resources>
