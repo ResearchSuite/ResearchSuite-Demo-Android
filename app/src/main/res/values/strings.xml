@@ -10,4 +10,9 @@
     <string name="settings_version">Version %1$s (Build %2$d) %3$s</string>
     <string name="settings_version_unknown">Version Unknown</string>
     <string name="splash_page">You\'ll be notified when it\'s time for your next survey</string>
+    <string name="insufficient_permissions">Insufficient permissions.</string>
+    <string name="permission_rationale">Location permission is needed for core functionality</string>
+    <string name="permission_denied_explanation">Permission was denied, but is needed for core
+        functionality.</string>
+    <string name="settings">Settings</string>
 </resources>

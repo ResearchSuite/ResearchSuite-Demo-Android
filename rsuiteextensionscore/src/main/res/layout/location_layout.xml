@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+
+    <TextView
+        android:id="@+id/question_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:minHeight = "@dimen/rsb_item_size_default"
+        android:gravity = "center_vertical"
+        android:paddingLeft = "@dimen/rsb_margin_left"
+        android:paddingRight= "@dimen/rsb_margin_right"
+        android:paddingTop = "@dimen/rsb_padding_medium"
+        android:paddingBottom = "@dimen/rsb_padding_medium"
+        android:textSize = "@dimen/rsb_text_size_title"
+        android:textColor = "?attr/colorAccent"
+        />
+
+    <TextView
+        android:id="@+id/question_detail"
+        android:minHeight = "@dimen/rsb_item_size_default"
+        android:gravity = "center_vertical"
+        android:paddingLeft = "@dimen/rsb_margin_left"
+        android:paddingRight= "@dimen/rsb_margin_right"
+        android:paddingTop = "@dimen/rsb_padding_medium"
+        android:paddingBottom = "@dimen/rsb_padding_medium"
+        android:textColor = "?attr/colorAccent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
+
+        <EditText
+            android:id="@+id/location_result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/rsb_margin_left" />
+
+
+
+
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/myMap"
+        android:layout_width="match_parent"
+        android:layout_height="293dp"
+        android:layout_marginBottom="10dp"
+        android:clickable="true"
+        android:apiKey="AIzaSyCsJg7SAnEdie7afiA1-yF6fktNuQIVOg0"
+        android:layout_weight="0.47" />
+
+
+    <Button
+        android:id="@+id/button_submit"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Submit " />
+
+
+</LinearLayout>

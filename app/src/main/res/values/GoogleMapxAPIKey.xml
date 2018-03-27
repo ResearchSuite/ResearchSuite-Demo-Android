@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--add your maps api key here-->
+    <string name="google_maps_key">AIzaSyCsJg7SAnEdie7afiA1-yF6fktNuQIVOg0</string>
+</resources>
