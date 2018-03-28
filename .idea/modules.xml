@@ -5,8 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/AVA YADL.iml" filepath="$PROJECT_DIR$/AVA YADL.iml" />
       <module fileurl="file://$PROJECT_DIR$/ResearchSuiteDemo.iml" filepath="$PROJECT_DIR$/ResearchSuiteDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/rsextensionsrstb/rsextensionsrstb.iml" filepath="$PROJECT_DIR$/rsextensionsrstb/rsextensionsrstb.iml" />
-      <module fileurl="file://$PROJECT_DIR$/rsuiteextensionscore/rsuiteextensionscore.iml" filepath="$PROJECT_DIR$/rsuiteextensionscore/rsuiteextensionscore.iml" />
     </modules>
   </component>
 </project>

@@ -66,13 +66,13 @@
             android:screenOrientation="portrait" />
 
         <receiver
-            android:name=".notification.TaskNotificationReceiver"
+            android:name=".notificationManagement.TaskNotificationReceiver"
             android:enabled="true"
             android:exported="false"
             />
 
         <receiver
-            android:name=".notification.TaskAlertReceiver"
+            android:name=".notificationManagement.TaskAlertReceiver"
             android:enabled="true"
             android:exported="false"
             >
@@ -84,7 +84,7 @@
         </receiver>
 
         <receiver
-            android:name=".notification.DeviceBootReceiver"
+            android:name=".notificationManagement.DeviceBootReceiver"
             android:enabled="true"
             android:exported="false"
             >
@@ -93,6 +93,21 @@
             </intent-filter>
         </receiver>
 
+        <receiver
+            android:name="com.example.christina.researchsuitedemo.location.DemoGeofenceManagerBroadcastReceiver"
+            android:enabled="true"
+            android:exported="false"
+            >
+
+            <intent-filter>
+                <action android:name="io.smalldata.ancile.common.location.START_MONITORING_SAVED_REGIONS"/>
+                <action android:name="io.smalldata.ancile.common.location.RESTART_MONITORING_SAVED_REGIONS"/>
+                <action android:name="io.smalldata.ancile.common.location.STOP_MONITORING_ALL_REGIONS"/>
+            </intent-filter>
+
+        </receiver>
+
+        <service android:name=".location.DemoGeofenceTransitionIntentService" />
 
 
 

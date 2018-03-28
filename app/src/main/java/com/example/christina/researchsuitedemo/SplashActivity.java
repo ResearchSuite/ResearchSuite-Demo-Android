@@ -3,8 +3,8 @@ package com.example.christina.researchsuitedemo;
 import android.content.Intent;
 
 import com.curiosityhealth.ls2sdk.core.manager.LS2Manager;
-import com.example.christina.researchsuitedemo.notification.NotificationTime;
-import com.example.christina.researchsuitedemo.notification.TaskAlertReceiver;
+import com.example.christina.researchsuitedemo.notificationManagement.NotificationTime;
+import com.example.christina.researchsuitedemo.notificationManagement.TaskAlertReceiver;
 import com.example.christina.researchsuitedemo.studyManagement.RSActivityManager;
 import com.example.christina.researchsuitedemo.studyManagement.RSFileAccess;
 import com.example.christina.researchsuitedemo.studyManagement.RSFirstRun;

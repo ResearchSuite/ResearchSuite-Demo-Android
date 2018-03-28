@@ -8,6 +8,5 @@ org.researchsuite.rstb.DefaultStepGenerators.RSTBDefaultStepGenerator
 edu.cornell.tech.foundry.sdl_rsx_rstbsupport.YADLFullStepGenerator
 edu.cornell.tech.foundry.sdl_rsx_rstbsupport.YADLSpotStepGenerator
 edu.cornell.tech.foundry.sdl_rsx_rstbsupport.PAMStepGenerator
-edu.cornell.tech.foundry.rsextensionsrstb.LocationStepGenerator
-
+org.researchsuite.rsextensionsrstb.LocationStepGenerator
 

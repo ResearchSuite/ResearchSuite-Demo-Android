@@ -21,10 +21,12 @@ import org.researchstack.backbone.storage.database.sqlite.SqlCipherDatabaseHelpe
 import org.researchstack.backbone.storage.database.sqlite.UpdatablePassphraseProvider;
 import org.researchstack.backbone.storage.file.UnencryptedProvider;
 import org.researchstack.skin.DataResponse;
+import org.researchsuite.rstb.RSTBStateHelper;
 
 import com.example.christina.researchsuitedemo.resultManagement.OMHTransformer;
-import com.example.christina.researchsuitedemo.notification.NotificationTime;
+import com.example.christina.researchsuitedemo.notificationManagement.NotificationTime;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,6 +35,8 @@ import rx.SingleSubscriber;
 
 
 public class RSApplication extends Application {
+
+    public static float GEOFENCE_RADIUS = 300.0f;
 
     @Override
     public void onCreate()
@@ -162,6 +166,37 @@ public class RSApplication extends Application {
         });
 
     }
+
+    public void initializeGeofenceManager(){
+        RSTBStateHelper stateHelper = RSTaskBuilderManager.getBuilder().getStepBuilderHelper().getStateHelper();
+
+        double homeLat = 0;
+        double homeLng = 0;
+
+        byte[] homeLatByte = stateHelper.valueInState(this,"latitude_home");
+        byte[] homeLngByte = stateHelper.valueInState(this,"longitude_home");
+
+        if(homeLatByte != null && homeLngByte != null){
+            try {
+                String homeLatString = new String(homeLatByte, "UTF-8");
+                String homeLngString = new String(homeLngByte, "UTF-8");
+
+                homeLat = Double.parseDouble(homeLatString);
+                homeLng = Double.parseDouble(homeLngString);
+
+
+              //  RSuiteGeofenceManager.init(this,homeLat,homeLng);
+
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+        }
+        else {
+          //  RSuiteGeofenceManager.init(this,homeLat,homeLng);
+        }
+
+    }
+
 
     @Override
     protected void attachBaseContext(Context base)

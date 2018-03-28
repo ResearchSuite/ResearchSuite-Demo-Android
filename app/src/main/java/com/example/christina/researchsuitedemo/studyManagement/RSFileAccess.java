@@ -7,11 +7,14 @@ package com.example.christina.researchsuitedemo.studyManagement;
 import android.content.Context;
 import android.support.annotation.Nullable;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import org.researchstack.backbone.StorageAccess;
 import org.researchstack.backbone.storage.file.SimpleFileAccess;
 import org.researchstack.backbone.utils.FormatHelper;
 
 import java.io.File;
+import java.nio.ByteBuffer;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -30,6 +33,8 @@ public class RSFileAccess extends SimpleFileAccess implements RSTBStateHelper, R
     private String pathName;
 
     private static String SIGNED_IN_DATE = "SIGNED_IN_DATE";
+    private static String CONFIGURED_LOCATIONS = "CONFIGURED_LOCATIONS";
+    private static String HOME_LOCATION = "HOME_LOCATION";
 
     public static RSFileAccess getInstance()
     {
@@ -158,4 +163,75 @@ public class RSFileAccess extends SimpleFileAccess implements RSTBStateHelper, R
 
         fileOrDirectory.delete();
     }
+
+    private void setLatLngInState(Context context, String key, LatLng position) {
+        this.setValueInState(context, key+ ".lat", toByteArray(position.latitude));
+        this.setValueInState(context, key+ ".lng", toByteArray(position.longitude));
+    }
+
+    @Nullable
+    private LatLng getLatLngInState(Context context, String key) {
+
+        byte[] latBytes = this.valueInState(context, key+".lat");
+        if (latBytes == null) {
+            return null;
+        }
+
+        byte[] lngBytes = this.valueInState(context, key+".lng");
+        if (lngBytes == null) {
+            return null;
+        }
+
+        return new LatLng(
+                toDouble(latBytes),
+                toDouble(lngBytes)
+        );
+    }
+    public static double toDouble(byte[] bytes) {
+        return ByteBuffer.wrap(bytes).getDouble();
+    }
+
+    public static byte[] toByteArray(double value) {
+        byte[] bytes = new byte[8];
+        ByteBuffer.wrap(bytes).putDouble(value);
+        return bytes;
+    }
+
+    public void setConfiguredLocations(Context context, Boolean configuredLocations) {
+        this.setBooleanInState(context, CONFIGURED_LOCATIONS, configuredLocations);
+    }
+
+    public boolean hasConfiguredLocations(Context context) {
+        Boolean value = this.getBooleanInState(context, CONFIGURED_LOCATIONS);
+        if (value != null) {
+            return value;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public void setHomeLocation(Context context, LatLng position) {
+        this.setLatLngInState(context, HOME_LOCATION, position);
+    }
+
+    public LatLng getHomeLocation(Context context) {
+        return this.getLatLngInState(context, HOME_LOCATION);
+    }
+
+    private void setBooleanInState(Context context, String key, Boolean b) {
+        byte[] bytes = { b ? (byte) 1 : (byte) 0};
+        this.setValueInState(context, key, bytes);
+    }
+
+    @Nullable
+    private Boolean getBooleanInState(Context context, String key) {
+        byte[] bytes = this.valueInState(context, key);
+        if (bytes == null) {
+            return null;
+        }
+
+        return bytes[0] == 1;
+    }
+
 }

@@ -2,22 +2,17 @@ package com.example.christina.researchsuitedemo;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceFragmentCompat;
 import android.support.v7.preference.PreferenceScreen;
 
-import com.example.christina.researchsuitedemo.notification.NotificationTime;
+import com.example.christina.researchsuitedemo.notificationManagement.NotificationTime;
 import com.example.christina.researchsuitedemo.studyManagement.RSActivityManager;
 import com.example.christina.researchsuitedemo.studyManagement.RSFileAccess;
 
 import org.researchstack.backbone.storage.file.StorageAccessListener;
 import org.researchstack.backbone.utils.LogExt;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  * Created by christinatsangouri on 3/26/18.

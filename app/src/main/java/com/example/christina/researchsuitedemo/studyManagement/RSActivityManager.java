@@ -5,13 +5,22 @@ package com.example.christina.researchsuitedemo.studyManagement;
  */
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.location.Location;
+import android.location.LocationManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.example.christina.researchsuitedemo.notification.NotificationTime;
-import com.example.christina.researchsuitedemo.notification.TaskAlertReceiver;
+import com.example.christina.researchsuitedemo.location.RSGeofenceManagerBroadcastReceiver;
+import com.example.christina.researchsuitedemo.location.RSRegion;
+import com.example.christina.researchsuitedemo.location.SavedRegions;
+import com.example.christina.researchsuitedemo.notificationManagement.NotificationTime;
+import com.example.christina.researchsuitedemo.notificationManagement.TaskAlertReceiver;
+import com.google.android.gms.maps.model.LatLng;
 
 import org.researchstack.backbone.ResourcePathManager;
 import org.researchstack.backbone.result.StepResult;
@@ -19,12 +28,18 @@ import org.researchstack.backbone.result.TaskResult;
 import org.researchstack.backbone.step.Step;
 import org.researchstack.backbone.task.OrderedTask;
 import org.researchstack.backbone.task.Task;
+import org.researchstack.backbone.utils.LogExt;
+import org.researchsuite.rstb.RSTBStateHelper;
+import org.researchsuite.rsuiteextensionscore.LocationResult;
 
 import java.util.Calendar;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 import java.util.Random;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentLinkedQueue;
+
 
 /**
  * Created by jameskizer on 4/21/17.
@@ -164,6 +179,8 @@ public class RSActivityManager {
     public void completeActivity(Context context, TaskResult taskResult, CTFActivityRun activityRun) {
 
         assert(activityRun != null);
+        RSFileAccess state = RSFileAccess.getInstance();
+
 
         if (activityRun.identifier.equals("notification_date")) {
             StepResult stepResult = taskResult.getStepResult("notification_time_picker");
@@ -177,6 +194,63 @@ public class RSActivityManager {
 
                 context.sendBroadcast(TaskAlertReceiver.createSetNotificationIntent());
             }
+        }
+
+        SharedPreferences mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        RSTBStateHelper stateHelper = RSTaskBuilderManager.getBuilder().getStepBuilderHelper().getStateHelper();
+
+        if(Objects.equals(activityRun.identifier, "location_survey")){
+
+            SavedRegions savedRegions = new SavedRegions(context);
+
+            StepResult homeResult = taskResult.getStepResult("home_location_step");
+            if (homeResult != null && homeResult.getResult() != null) {
+
+
+                LocationResult home = (LocationResult)homeResult.getResult();
+                RSRegion region = new RSRegion(
+                        "home",
+                        home.getLatitude(),
+                        home.getLongitute(),
+                        RSApplication.GEOFENCE_RADIUS
+                );
+
+                savedRegions.addRSRegion(region);
+
+                RSFileAccess.getInstance().setHomeLocation(context, new LatLng(home.getLatitude(), home.getLongitute()));
+
+            }
+
+
+            state.setConfiguredLocations(context, true);
+
+
+            //restart monitoring location
+            Intent restartMonitoringGeofences = RSGeofenceManagerBroadcastReceiver.restartMonitoringSavedRegionsIntent();
+            context.sendBroadcast(restartMonitoringGeofences);
+//            completion.onCompletion(null);
+
+
+//            StepResult stepResultHome = taskResult.getStepResult("home_location_step");
+//            Map stepResultsHome = stepResultHome.getResults();
+//            LocationStepResult locationStepResultHome= (LocationStepResult) stepResultsHome.get("answer");
+//            Double latitudeHome = locationStepResultHome.getLatitude();
+//            Double longitudeHome = locationStepResultHome.getLongitute();
+//            String userInputHome = locationStepResultHome.getUserInput();
+//            String addressHome = locationStepResultHome.getAddress();
+//
+//
+//            if(stateHelper != null){
+//                stateHelper.setValueInState(context,"latitude_home",String.valueOf(latitudeHome).getBytes());
+//                stateHelper.setValueInState(context,"longitude_home",String.valueOf(longitudeHome).getBytes());
+//                stateHelper.setValueInState(context,"user_input_home",String.valueOf(userInputHome).getBytes());
+//                stateHelper.setValueInState(context,"address_home",String.valueOf(addressHome).getBytes());
+//            }
+//
+//            SharedPreferences.Editor editor = mSharedPreferences.edit();
+//            editor.putString("user_input_home", userInputHome);
+//            editor.commit();
+
         }
 
         RSResultsProcessorManager.getResultsProcessor().processResult(
