@@ -22,12 +22,12 @@ public class DemoGeofenceTransisitionIntentService extends RSGeofenceTransitionI
                 event.getTimestamp()
         );
 
-        LS2Manager.getInstance().addDatapoint(sample, new LS2Manager.Completion() {
-            @Override
-            public void onCompletion(Exception e) {
-                Log.d("geofence","geofence posted");
-            }
-        });
+//        LS2Manager.getInstance().addDatapoint(sample, new LS2Manager.Completion() {
+//            @Override
+//            public void onCompletion(Exception e) {
+//                Log.d("geofence","geofence posted");
+//            }
+//        });
 
 //        OhmageOMHManager.getInstance().addDatapoint(sample, new OhmageOMHManager.Completion() {
 //            @Override
