@@ -17,60 +17,70 @@
       {
         "identifier": "yadl_full",
         "type": "YADLFullAssessment",
-        "text": "Over the past week, how difficult was this activity for you?",
+        "text": "Over the past week, how much has this applied to you?",
         "choices":[
           {
-            "text":"Easy",
-            "value":"easy",
+            "text":"Not at all",
+            "value":"0",
             "color":"#258313"
           },
           {
-            "text":"Moderate",
-            "value":"moderate",
+            "text":"A little bit",
+            "value":"1",
+            "color":"#3399ff"
+          },
+          {
+            "text":"Somewhat",
+            "value":"2",
+            "color":"#ffcc00"
+          },
+          {
+            "text":"Quite a bit",
+            "value":"3",
             "color":"#F0743E"
           },
           {
-            "text":"Hard",
-            "value":"hard",
+            "text":"Very much",
+            "value":"4",
             "color":"#D20005"
           }
         ],
         "imageExtension": "jpeg",
         "items": [
           {
-            "imageTitle":"BedtoChair",
-            "description":"Bed To Chair",
-            "identifier":"BedtoChair"
+            "imageTitle":"LackofEnergy",
+            "description":"Lack of Energy",
+            "identifier":"LackofEnergy"
           },
           {
-            "imageTitle":"Dressing",
-            "description":"Dressing",
-            "identifier":"Dressing"
+            "imageTitle":"FamilySupport",
+            "description":"Emotional Support from Family",
+            "identifier":"FamilySupport"
           },
           {
-            "imageTitle":"Housework",
-            "description":"Housework",
-            "identifier":"Housework"
+            "imageTitle":"FeelingSad",
+            "description":"Feeling Sad",
+            "identifier":"FeelingSad"
           },
           {
-            "imageTitle":"Lifting",
-            "description":"Lift 10-pounds",
-            "identifier":"Lifting"
+            "imageTitle":"SleepingWell",
+            "description":"Sleeping Well",
+            "identifier":"SleepingWell"
           },
           {
-            "imageTitle":"Shopping",
-            "description":"Shopping",
-            "identifier":"Shopping"
+            "imageTitle":"EatingWell",
+            "description":"Good Appetite",
+            "identifier":"EatingWell"
           },
           {
-            "imageTitle":"ShortWalk",
-            "description":"Talking a short walk",
-            "identifier":"ShortWalk"
+            "imageTitle":"AchesAndPains",
+            "description":"Bothersome Aches and Pains",
+            "identifier":"AchesAndPains"
           },
           {
-            "imageTitle":"Walkingupstairs",
-            "description":"Climbing Stairs",
-            "identifier":"Walkingupstairs"
+            "imageTitle":"EnjoyingLife",
+            "description":"Enjoying Life",
+            "identifier":"EnjoyingLife"
           }
 
 
@@ -83,13 +93,13 @@
     {
       "transform": "YADLFullRaw",
       "inputMapping": [
-        {"parameter":"Eating", "stepIdentifier":"yadl_full.BedtoChair"},
-        {"parameter":"Bathing", "stepIdentifier":"yadl_full.Dressing"},
-        {"parameter":"Dressing", "stepIdentifier":"yadl_full.Housework"},
-        {"parameter":"Toilet", "stepIdentifier":"yadl_full.Lifting"},
-        {"parameter":"BedToChair", "stepIdentifier":"yadl_full.Shopping"},
-        {"parameter":"Shopping", "stepIdentifier":"yadl_full.ShortWalk"},
-        {"parameter":"Housework", "stepIdentifier":"yadl_full.Walkingupstairs"},
+        {"parameter":"LackofEnergy", "stepIdentifier":"yadl_full.LackofEnergy"},
+        {"parameter":"FamilySupport", "stepIdentifier":"yadl_full.FamilySupport"},
+        {"parameter":"FeelingSad", "stepIdentifier":"yadl_full.FeelingSad"},
+        {"parameter":"SleepingWell", "stepIdentifier":"yadl_full.SleepingWell"},
+        {"parameter":"EatingWell", "stepIdentifier":"yadl_full.EatingWell"},
+        {"parameter":"AchesAndPains", "stepIdentifier":"yadl_full.AchesAndPains"},
+        {"parameter":"EnjoyingLife", "stepIdentifier":"yadl_full.EnjoyingLife"},
         {"parameter": "schemaID", "constant":{
           "namespace": "Cornell",
           "name": "yadl-full-assessment",
