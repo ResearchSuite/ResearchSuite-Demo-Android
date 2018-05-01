@@ -1,4 +1,4 @@
-package com.example.christina.researchsuitedemo.location;
+package com.example.christina.researchsuitedemo.geofence;//package com.example.christina.researchsuitedemo.location;
 
 import java.io.Serializable;
 import java.util.UUID;

@@ -33,6 +33,10 @@ public class OMHTransformer implements OMHIntermediateResultTransformer {
             return new DemographicsSurveyOMHDatapoint(context,(DemographicsSurveyResult)intermediateResult);
         }
 
+        if(intermediateResult.getType() == "DemographicsTemplate"){
+            return new DemographicsTemplateOMHDatapoint(context,(DemographicsTemplateResult)intermediateResult);
+        }
+
         else{
             return null;
         }

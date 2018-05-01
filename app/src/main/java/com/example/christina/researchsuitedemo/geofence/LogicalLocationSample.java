@@ -1,4 +1,4 @@
-package com.example.christina.researchsuitedemo.location;
+package com.example.christina.researchsuitedemo.geofence;//package com.example.christina.researchsuitedemo.location;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
@@ -44,7 +44,7 @@ public class LogicalLocationSample extends OMHDataPointBuilder {
     }
 
     public OMHSchema getSchema() {
-        return new OMHSchema("logical-location", "cornell", "1.0");
+        return new OMHSchema("logical-location", "cornell", "1.0.0");
     }
 
     @Nullable

@@ -10,6 +10,7 @@ import android.content.Context;
 import com.curiosityhealth.ls2sdk.core.manager.LS2Manager;
 import com.curiosityhealth.ls2sdk.rsrp.LS2ResultBackend;
 import com.curiosityhealth.ls2sdk.omh.OMHIntermediateResultTransformer;
+import com.example.christina.researchsuitedemo.MainActivity;
 import com.example.christina.researchsuitedemo.R;
 
 import net.sqlcipher.database.SQLiteDatabase;
@@ -25,6 +26,8 @@ import org.researchsuite.rstb.RSTBStateHelper;
 
 import com.example.christina.researchsuitedemo.resultManagement.OMHTransformer;
 import com.example.christina.researchsuitedemo.notificationManagement.NotificationTime;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationServices;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -36,7 +39,8 @@ import rx.SingleSubscriber;
 
 public class RSApplication extends Application {
 
-    public static float GEOFENCE_RADIUS = 300.0f;
+    //public static float GEOFENCE_RADIUS = 300.0f;
+    protected GoogleApiClient mGoogleApiClient;
 
     @Override
     public void onCreate()
@@ -44,6 +48,8 @@ public class RSApplication extends Application {
         super.onCreate();
         this.initializeSingletons(this);
     }
+
+
 
     public void initializeSingletons(Context context) {
 
@@ -73,14 +79,6 @@ public class RSApplication extends Application {
         String directory = context.getApplicationInfo().dataDir;
 
 
-//        OhmageOMHManager.config(
-//                context,
-//                getString(R.string.omh_base_url),
-//                getString(R.string.omh_client_id),
-//                getString(R.string.omh_client_secret),
-//                fileAccess,
-//                getString(R.string.ohmage_queue_directory)
-//        );
 
         RSResourcePathManager resourcePathManager = new RSResourcePathManager();
         ResourcePathManager.init(resourcePathManager);
@@ -90,10 +88,6 @@ public class RSApplication extends Application {
         LS2ResultBackend.config(LS2Manager.getInstance(), this.getOMHIntermediateResultTransformers());
         RSResultsProcessorManager.init(LS2ResultBackend.getInstance());
 
-//
-//
-//        RSResultsProcessorManager.init(ORBEOhmageResultBackEnd.getInstance());
-//        RSRPResultsProcessor resultsProcessor = new RSRPResultsProcessor(ORBEOhmageResultBackEnd.getInstance());
 
     }
 
@@ -101,8 +95,6 @@ public class RSApplication extends Application {
         ArrayList<OMHIntermediateResultTransformer> transformers = new ArrayList<>();
 
         transformers.add(new OMHTransformer());
-      //  transformers.add(new YADLFullRawOMHTransformer());
-
 
         return transformers;
     }
@@ -167,34 +159,40 @@ public class RSApplication extends Application {
 
     }
 
-    public void initializeGeofenceManager(){
+    public void initializeGeofenceManager() {
         RSTBStateHelper stateHelper = RSTaskBuilderManager.getBuilder().getStepBuilderHelper().getStateHelper();
 
         double homeLat = 0;
         double homeLng = 0;
+        double workLat = 0;
+        double workLng = 0;
 
-        byte[] homeLatByte = stateHelper.valueInState(this,"latitude_home");
-        byte[] homeLngByte = stateHelper.valueInState(this,"longitude_home");
+        byte[] homeLatByte = stateHelper.valueInState(this, "latitude_home");
+        byte[] homeLngByte = stateHelper.valueInState(this, "longitude_home");
+        byte[] workLatByte = stateHelper.valueInState(this, "latitude_work");
+        byte[] workLngByte = stateHelper.valueInState(this, "longitude_work");
 
-        if(homeLatByte != null && homeLngByte != null){
+        if (homeLatByte != null && homeLngByte != null && workLatByte != null && workLngByte != null) {
             try {
                 String homeLatString = new String(homeLatByte, "UTF-8");
                 String homeLngString = new String(homeLngByte, "UTF-8");
+                String workLatString = new String(workLatByte, "UTF-8");
+                String workLngString = new String(workLngByte, "UTF-8");
 
                 homeLat = Double.parseDouble(homeLatString);
                 homeLng = Double.parseDouble(homeLngString);
+                workLat = Double.parseDouble(workLatString);
+                workLng = Double.parseDouble(workLngString);
 
+                RSGeofenceManager.init(this, homeLat, homeLng, workLat, workLng);
 
-              //  RSuiteGeofenceManager.init(this,homeLat,homeLng);
 
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
+        } else {
+            RSGeofenceManager.init(this, homeLat, homeLng, workLat, workLng);
         }
-        else {
-          //  RSuiteGeofenceManager.init(this,homeLat,homeLng);
-        }
-
     }
 
 
