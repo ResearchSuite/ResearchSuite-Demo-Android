@@ -51,7 +51,7 @@
   },
     "resultTransforms":[
     {
-    "transform":"DemographicsSurvey",
+    "transform":"SurveyResult",
     "inputMapping":[
       {
         "stepIdentifier":"gender",

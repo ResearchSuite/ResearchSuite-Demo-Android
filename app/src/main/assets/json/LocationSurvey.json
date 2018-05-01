@@ -16,7 +16,7 @@
       {
         "identifier": "work_location_step",
         "type": "location",
-        "title": "work Location",
+        "title": "Work Location",
         "text": "Please enter your work location"
       },
       {

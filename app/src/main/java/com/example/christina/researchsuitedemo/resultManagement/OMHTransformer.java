@@ -29,12 +29,8 @@ public class OMHTransformer implements OMHIntermediateResultTransformer {
             return new PAMRawOMHDatapoint(context,(PAMRaw)intermediateResult);
         }
 
-        if(intermediateResult.getType() == "DemographicsSurvey"){
-            return new DemographicsSurveyOMHDatapoint(context,(DemographicsSurveyResult)intermediateResult);
-        }
-
-        if(intermediateResult.getType() == "DemographicsTemplate"){
-            return new DemographicsTemplateOMHDatapoint(context,(DemographicsTemplateResult)intermediateResult);
+        if(intermediateResult.getType() == "SurveyResult"){
+            return new GenericSurveyOMHDatapoint(context,(GenericSurveyResult) intermediateResult);
         }
 
         else{

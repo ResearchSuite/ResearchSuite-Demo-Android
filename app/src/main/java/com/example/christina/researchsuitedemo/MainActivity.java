@@ -40,21 +40,14 @@ import java.util.Map;
 import static android.view.MenuItem.SHOW_AS_ACTION_ALWAYS;
 
 public class MainActivity extends RSActivity {
-//        GoogleApiClient.ConnectionCallbacks,
-//        GoogleApiClient.OnConnectionFailedListener,
-//        ResultCallback<Status> {
+
 
     private static final String TAG = "MainActivity";
     public static final int SHOW_AS_ACTION_ALWAYS = 2;
     public static final int SHOW_AS_ACTION_IF_ROOM = 4;
     private static final int REQUEST_SETTINGS = 0xff31;
-  //  private RSuiteGeofenceManager.PendingGeofenceTask mPendingGeofenceTask = RSuiteGeofenceManager.PendingGeofenceTask.NONE;
     private static final int REQUEST_PERMISSIONS_REQUEST_CODE = 34;
     private RSGeofenceManager.PendingGeofenceTask mPendingGeofenceTask = RSGeofenceManager.PendingGeofenceTask.NONE;
-
-    protected ArrayList<Geofence> mGeofenceList;
-    protected GoogleApiClient mGoogleApiClient;
-    private Button mAddGeofencesButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,21 +58,6 @@ public class MainActivity extends RSActivity {
         RSApplication app = (RSApplication) getApplication();
         app.initializeGeofenceManager();
         startMonitoringGeofences();
-
-//        mAddGeofencesButton = (Button) findViewById(R.id.start);
-//        mAddGeofencesButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                handleClick();
-//            }
-//
-//        });
-
-//        mGeofenceList = new ArrayList<Geofence>();
-//        populateGeofenceList();
-//        buildGoogleApiClient();
-//        handleClick();
-
 
 //        RSActivityManager.get().queueActivity(this, "PAMSurvey", true);
 //        RSActivityManager.get().queueActivity(this, "YADLSpotSurvey", true);
