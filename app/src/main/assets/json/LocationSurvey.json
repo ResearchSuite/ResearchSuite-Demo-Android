@@ -14,6 +14,12 @@
         "text": "Please enter your home location"
       },
       {
+        "identifier": "work_location_step",
+        "type": "location",
+        "title": "work Location",
+        "text": "Please enter your work location"
+      },
+      {
         "identifier": "onboarding_completed_instructions",
         "type": "instruction",
         "title": "Onboarding Done!"

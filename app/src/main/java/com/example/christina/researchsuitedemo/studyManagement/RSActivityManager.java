@@ -15,9 +15,9 @@ import android.support.v7.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.example.christina.researchsuitedemo.location.RSGeofenceManagerBroadcastReceiver;
-import com.example.christina.researchsuitedemo.location.RSRegion;
-import com.example.christina.researchsuitedemo.location.SavedRegions;
+//import com.example.christina.researchsuitedemo.location.RSGeofenceManagerBroadcastReceiver;
+//import com.example.christina.researchsuitedemo.location.RSRegion;
+//import com.example.christina.researchsuitedemo.location.SavedRegions;
 import com.example.christina.researchsuitedemo.notificationManagement.NotificationTime;
 import com.example.christina.researchsuitedemo.notificationManagement.TaskAlertReceiver;
 import com.google.android.gms.maps.model.LatLng;
@@ -201,33 +201,70 @@ public class RSActivityManager {
 
         if(Objects.equals(activityRun.identifier, "location_survey")){
 
-            SavedRegions savedRegions = new SavedRegions(context);
+            StepResult stepResultHome = taskResult.getStepResult("home_location_step");
+            Map stepResultsHome = stepResultHome.getResults();
+            LocationResult locationStepResultHome= (LocationResult) stepResultsHome.get("answer");
+            Double latitudeHome = locationStepResultHome.getLatitude();
+            Double longitudeHome = locationStepResultHome.getLongitute();
+            String userInputHome = locationStepResultHome.getUserInput();
+            String addressHome = locationStepResultHome.getAddress();
 
-            StepResult homeResult = taskResult.getStepResult("home_location_step");
-            if (homeResult != null && homeResult.getResult() != null) {
+            Log.d("location result:",String.valueOf(latitudeHome));
 
+            StepResult stepResultWork = taskResult.getStepResult("work_location_step");
+            Map stepResultsWork = stepResultWork.getResults();
+            LocationResult locationStepResultWork= (LocationResult) stepResultsWork.get("answer");
+            Double latitudeWork = locationStepResultWork.getLatitude();
+            Double longitudeWork = locationStepResultWork.getLongitute();
+            String userInputWork = locationStepResultWork.getUserInput();
+            String addressWork = locationStepResultWork.getAddress();
 
-                LocationResult home = (LocationResult)homeResult.getResult();
-                RSRegion region = new RSRegion(
-                        "home",
-                        home.getLatitude(),
-                        home.getLongitute(),
-                        RSApplication.GEOFENCE_RADIUS
-                );
-
-                savedRegions.addRSRegion(region);
-
-                RSFileAccess.getInstance().setHomeLocation(context, new LatLng(home.getLatitude(), home.getLongitute()));
-
+            if(stateHelper != null){
+                stateHelper.setValueInState(context,"latitude_home",String.valueOf(latitudeHome).getBytes());
+                stateHelper.setValueInState(context,"latitude_work",String.valueOf(latitudeWork).getBytes());
+                stateHelper.setValueInState(context,"longitude_home",String.valueOf(longitudeHome).getBytes());
+                stateHelper.setValueInState(context,"longitude_work",String.valueOf(longitudeWork).getBytes());
+                stateHelper.setValueInState(context,"user_input_home",String.valueOf(userInputHome).getBytes());
+                stateHelper.setValueInState(context,"user_input_work",String.valueOf(userInputWork).getBytes());
+                stateHelper.setValueInState(context,"address_home",String.valueOf(addressHome).getBytes());
+                stateHelper.setValueInState(context,"address_work",String.valueOf(addressWork).getBytes());
             }
 
+            this.completedOnboarding = true;
 
-            state.setConfiguredLocations(context, true);
 
+            SharedPreferences.Editor editor = mSharedPreferences.edit();
+            editor.putString("user_input_home", userInputHome);
+            editor.putString("user_input_work", userInputWork);
+            editor.commit();
 
-            //restart monitoring location
-            Intent restartMonitoringGeofences = RSGeofenceManagerBroadcastReceiver.restartMonitoringSavedRegionsIntent();
-            context.sendBroadcast(restartMonitoringGeofences);
+//            SavedRegions savedRegions = new SavedRegions(context);
+//
+//            StepResult homeResult = taskResult.getStepResult("home_location_step");
+//            if (homeResult != null && homeResult.getResult() != null) {
+//
+//
+//                LocationResult home = (LocationResult)homeResult.getResult();
+//                RSRegion region = new RSRegion(
+//                        "home",
+//                        home.getLatitude(),
+//                        home.getLongitute(),
+//                        RSApplication.GEOFENCE_RADIUS
+//                );
+//
+//                savedRegions.addRSRegion(region);
+//
+//                RSFileAccess.getInstance().setHomeLocation(context, new LatLng(home.getLatitude(), home.getLongitute()));
+//
+//            }
+//
+//
+//            state.setConfiguredLocations(context, true);
+//
+//
+//            //restart monitoring location
+//            Intent restartMonitoringGeofences = RSGeofenceManagerBroadcastReceiver.restartMonitoringSavedRegionsIntent();
+//            context.sendBroadcast(restartMonitoringGeofences);
 //            completion.onCompletion(null);
 
 

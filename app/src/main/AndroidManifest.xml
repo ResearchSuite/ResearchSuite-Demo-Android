@@ -28,9 +28,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <service android:name=".geofence.GeofenceTransitionsIntentService"/>
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
         <activity android:name="com.example.christina.researchsuitedemo.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -93,21 +98,21 @@
             </intent-filter>
         </receiver>
 
-        <receiver
-            android:name="com.example.christina.researchsuitedemo.location.DemoGeofenceManagerBroadcastReceiver"
-            android:enabled="true"
-            android:exported="false"
-            >
+        <!--<receiver-->
+            <!--android:name="com.example.christina.researchsuitedemo.location.DemoGeofenceManagerBroadcastReceiver"-->
+            <!--android:enabled="true"-->
+            <!--android:exported="false"-->
+            <!--&gt;-->
 
-            <intent-filter>
-                <action android:name="io.smalldata.ancile.common.location.START_MONITORING_SAVED_REGIONS"/>
-                <action android:name="io.smalldata.ancile.common.location.RESTART_MONITORING_SAVED_REGIONS"/>
-                <action android:name="io.smalldata.ancile.common.location.STOP_MONITORING_ALL_REGIONS"/>
-            </intent-filter>
+            <!--<intent-filter>-->
+                <!--<action android:name="io.smalldata.ancile.common.location.START_MONITORING_SAVED_REGIONS"/>-->
+                <!--<action android:name="io.smalldata.ancile.common.location.RESTART_MONITORING_SAVED_REGIONS"/>-->
+                <!--<action android:name="io.smalldata.ancile.common.location.STOP_MONITORING_ALL_REGIONS"/>-->
+            <!--</intent-filter>-->
 
-        </receiver>
+        <!--</receiver>-->
 
-        <service android:name=".location.DemoGeofenceTransitionIntentService" />
+        <!--<service android:name=".location.DemoGeofenceTransitionIntentService" />-->
 
 
 

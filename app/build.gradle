@@ -29,6 +29,7 @@ dependencies {
     //noinspection GradleCompatible
 //    implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'com.google.android.gms:play-services:12.0.1'
     implementation 'org.researchstack:backbone:1.1.2'
     implementation 'org.researchstack:skin:1.1.2'
     implementation 'net.zetetic:android-database-sqlcipher:3.5.4@aar'
