@@ -18,6 +18,15 @@
         android:title="Take Demographics Assessment"/>
 
     <Preference
+        android:key="set_home_location"
+        android:title="Set Home Location"/>
+
+    <Preference
+        android:key="set_work_location"
+        android:title="Set Work Location"/>
+
+
+    <Preference
         android:key="set_notification_time"
         android:title="Set Notification Time"/>
 

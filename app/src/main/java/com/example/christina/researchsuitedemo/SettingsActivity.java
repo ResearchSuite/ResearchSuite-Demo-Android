@@ -8,6 +8,7 @@ import android.view.MenuItem;
 
 import com.example.christina.researchsuitedemo.studyManagement.RSActivity;
 import com.example.christina.researchsuitedemo.studyManagement.RSApplication;
+import com.example.christina.researchsuitedemo.studyManagement.RSGeofenceManager;
 
 import org.researchstack.backbone.utils.LogExt;
 import org.researchstack.skin.DataResponse;
@@ -97,5 +98,12 @@ public class SettingsActivity extends RSActivity {
             }
         });
 
+    }
+
+    public void updateGeofences(){
+
+        RSApplication app = (RSApplication) getApplication();
+        app.initializeGeofenceManager();
+        RSGeofenceManager.getInstance().startMonitoringGeofences(getApplicationContext());
     }
 }

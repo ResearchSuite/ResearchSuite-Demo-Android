@@ -290,6 +290,55 @@ public class RSActivityManager {
 
         }
 
+        if(Objects.equals(activityRun.identifier, "location_survey_home")){
+
+            StepResult stepResultHome = taskResult.getStepResult("home_location_step");
+            Map stepResultsHome = stepResultHome.getResults();
+            LocationResult locationStepResultHome= (LocationResult) stepResultsHome.get("answer");
+            Double latitudeHome = locationStepResultHome.getLatitude();
+            Double longitudeHome = locationStepResultHome.getLongitute();
+            String userInputHome = locationStepResultHome.getUserInput();
+            String addressHome = locationStepResultHome.getAddress();
+
+            if(stateHelper != null){
+                stateHelper.setValueInState(context,"latitude_home",String.valueOf(latitudeHome).getBytes());
+                stateHelper.setValueInState(context,"longitude_home",String.valueOf(longitudeHome).getBytes());
+                stateHelper.setValueInState(context,"user_input_home",String.valueOf(userInputHome).getBytes());
+                stateHelper.setValueInState(context,"address_home",String.valueOf(addressHome).getBytes());
+
+            }
+
+            SharedPreferences.Editor editor = mSharedPreferences.edit();
+            editor.putString("user_input_home", userInputHome);
+            editor.commit();
+
+
+
+        }
+
+        if(Objects.equals(activityRun.identifier, "location_survey_work")){
+
+            StepResult stepResultWork = taskResult.getStepResult("work_location_step");
+            Map stepResultsWork = stepResultWork.getResults();
+            LocationResult locationStepResultWork= (LocationResult) stepResultsWork.get("answer");
+            Double latitudeWork = locationStepResultWork.getLatitude();
+            Double longitudeWork = locationStepResultWork.getLongitute();
+            String userInputWork = locationStepResultWork.getUserInput();
+            String addressWork = locationStepResultWork.getAddress();
+
+            if(stateHelper != null){
+                stateHelper.setValueInState(context,"latitude_work",String.valueOf(latitudeWork).getBytes());
+                stateHelper.setValueInState(context,"longitude_work",String.valueOf(longitudeWork).getBytes());
+                stateHelper.setValueInState(context,"user_input_work",String.valueOf(userInputWork).getBytes());
+                stateHelper.setValueInState(context,"address_work",String.valueOf(addressWork).getBytes());
+
+            }
+
+            SharedPreferences.Editor editor = mSharedPreferences.edit();
+            editor.putString("user_input_work", userInputWork);
+            editor.commit();
+        }
+
         RSResultsProcessorManager.getResultsProcessor().processResult(
                 context,
                 taskResult,

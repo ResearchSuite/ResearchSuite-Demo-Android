@@ -1,11 +1,11 @@
 {
   "type": "recurring",
-  "identifier": "location_survey",
+  "identifier": "location_survey_home",
   "title": "Location Survey",
   "guid": "location_survey-1",
   "activity": {
     "type"      : "elementList",
-    "identifier": "location_onboarding",
+    "identifier": "location_home",
     "elements"   : [
       {
         "identifier": "home_location_step",
@@ -13,14 +13,9 @@
         "title": "Please enter your home location"
       },
       {
-        "identifier": "work_location_step",
-        "type": "location",
-        "title": "Please enter your work location"
-      },
-      {
-        "identifier": "onboarding_completed_instructions",
+        "identifier": "home_finished",
         "type": "instruction",
-        "title": "Onboarding Done!"
+        "title": "Thanks!"
       }
     ]
   },
