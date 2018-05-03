@@ -3,7 +3,7 @@
 
     <Preference
         android:key="yadl_full_assessment"
-        android:title="Take YADL Full Assessment"/>
+        android:title="Take FACT-P Survey"/>
 
     <Preference
         android:key="yadl_spot_assessment"
@@ -15,7 +15,7 @@
 
     <Preference
         android:key="demographics_assessment"
-        android:title="Take Demographics Assessment"/>
+        android:title="Take Quality of Life Survey"/>
 
     <Preference
         android:key="set_home_location"
