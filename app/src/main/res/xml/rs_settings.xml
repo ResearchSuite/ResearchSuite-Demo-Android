@@ -15,7 +15,7 @@
 
     <Preference
         android:key="demographics_assessment"
-        android:title="Take Demographics Assessment"/>
+        android:title="Take Quality of Life Survey"/>
 
     <Preference
         android:key="set_notification_time"

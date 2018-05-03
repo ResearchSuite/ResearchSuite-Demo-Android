@@ -58,9 +58,9 @@
             "identifier":"FamilySupport"
           },
           {
-            "imageTitle":"FeelingSad",
+            "imageTitle":"ManFeelingSad",
             "description":"Feeling Sad",
-            "identifier":"FeelingSad"
+            "identifier":"ManFeelingSad"
           },
           {
             "imageTitle":"SleepingWell",
@@ -68,7 +68,7 @@
             "identifier":"SleepingWell"
           },
           {
-            "imageTitle":"EatingWell",
+            "imageTitle":"ManEatingWell",
             "description":"Good Appetite",
             "identifier":"EatingWell"
           },
@@ -78,7 +78,7 @@
             "identifier":"AchesAndPains"
           },
           {
-            "imageTitle":"EnjoyingLife",
+            "imageTitle":"ManEnjoyingLife",
             "description":"Enjoying Life",
             "identifier":"EnjoyingLife"
           }
@@ -95,7 +95,7 @@
       "inputMapping": [
         {"parameter":"LackofEnergy", "stepIdentifier":"yadl_full.LackofEnergy"},
         {"parameter":"FamilySupport", "stepIdentifier":"yadl_full.FamilySupport"},
-        {"parameter":"FeelingSad", "stepIdentifier":"yadl_full.FeelingSad"},
+        {"parameter":"ManFeelingSad", "stepIdentifier":"yadl_full.ManFeelingSad"},
         {"parameter":"SleepingWell", "stepIdentifier":"yadl_full.SleepingWell"},
         {"parameter":"EatingWell", "stepIdentifier":"yadl_full.EatingWell"},
         {"parameter":"AchesAndPains", "stepIdentifier":"yadl_full.AchesAndPains"},
