@@ -8,38 +8,61 @@
     "identifier": "demographics_list",
     "elements"   : [
       {
-        "identifier": "gender",
+        "identifier": "SOB",
         "type": "singleChoiceText",
-        "text": "What is your gender?",
+        "text": "Were you short of breath?",
         "items": [
           {
-            "prompt": "Female",
-            "value": "female"
+            "prompt": "Not at all",
+            "value": "0"
           },
           {
-            "prompt": "Male",
-            "value": "male"
+            "prompt": "Very Little",
+            "value": "1"
           },
           {
-            "prompt": "Transgender",
-            "value": "transgender"
+            "prompt": "Quite a Bit",
+            "value": "2"
           },
           {
-            "prompt": "Other",
-            "value": "other"
+            "prompt": "Very much",
+            "value": "3"
           }
         ]
       },
       {
-        "identifier": "age",
-        "type": "numericInteger",
-        "text": "What is your age?",
-        "range": {
-          "min": 18,
-          "max": 99,
-          "unitLabel": "years"
-        }
+        "identifier": "activites",
+        "type": "singleChoiceText",
+        "text": "Were you limited in pursuing your hobbies or other leisure time activities?",
+        "items": [
+          {
+            "prompt": "Not at all",
+            "value": "0"
+          },
+          {
+            "prompt": "Very Little",
+            "value": "1"
+          },
+          {
+            "prompt": "Quite a Bit",
+            "value": "2"
+          },
+          {
+            "prompt": "Very much",
+            "value": "3"
+          }
+        ]
       },
+//      {
+//        "identifier": "age",
+//        "type": "numericInteger",
+//        "text": "What is your age?",
+//        "range": {
+//          "min": 18,
+//          "max": 99,
+//          "unitLabel": "years"
+//        }
+//      },
       {
         "identifier": "zip_code",
         "type": "textfield",
@@ -54,8 +77,8 @@
     "transform":"DemographicsSurvey",
     "inputMapping":[
       {
-        "stepIdentifier":"gender",
-        "parameter":"gender"
+        "stepIdentifier":"SOB",
+        "parameter":"SOB"
       },
       {
         "stepIdentifier":"age",
