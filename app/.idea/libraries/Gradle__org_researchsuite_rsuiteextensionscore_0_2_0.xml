@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: org.researchsuite:rsuiteextensionscore-0.2.0">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/rsuiteextensionscore-0.2.0.aar/bcdc812523303daa960596d807f84d69/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/rsuiteextensionscore-0.2.0.aar/bcdc812523303daa960596d807f84d69/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.researchsuite/rsuiteextensionscore/0.2.0/7ff3db6a959486bb1adaac46b0e55be91ff14bc6/rsuiteextensionscore-0.2.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: edu.cornell.tech.foundry:sdl_rsx-0.1.1">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/sdl_rsx-0.1.1.aar/0bae1824a38281d1c7f10aa864554926/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/sdl_rsx-0.1.1.aar/0bae1824a38281d1c7f10aa864554926/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/edu.cornell.tech.foundry/sdl_rsx/0.1.1/4d34657d35946da80a5e1ffd8d6631e1ed248465/sdl_rsx-0.1.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

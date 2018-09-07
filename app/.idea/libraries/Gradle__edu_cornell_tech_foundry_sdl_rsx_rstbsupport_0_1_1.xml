@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: edu.cornell.tech.foundry:sdl_rsx_rstbsupport-0.1.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/sdl_rsx_rstbsupport-0.1.1.aar/d0dd7a616c6a9abf2cbd190513fb6e51/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/sdl_rsx_rstbsupport-0.1.1.aar/d0dd7a616c6a9abf2cbd190513fb6e51/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/edu.cornell.tech.foundry/sdl_rsx_rstbsupport/0.1.1/3ebf74bf21a7a35bf909101ee52607db194eb3a2/sdl_rsx_rstbsupport-0.1.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

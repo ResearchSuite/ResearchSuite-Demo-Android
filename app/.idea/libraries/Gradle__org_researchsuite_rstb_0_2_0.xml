@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: org.researchsuite:rstb-0.2.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/rstb-0.2.0.aar/f26de4b31648b0bc7abcf4fb935f1737/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/rstb-0.2.0.aar/f26de4b31648b0bc7abcf4fb935f1737/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.researchsuite/rstb/0.2.0/9ad2cf74e6e27a3d05cc84c3942be190ed8b2801/rstb-0.2.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

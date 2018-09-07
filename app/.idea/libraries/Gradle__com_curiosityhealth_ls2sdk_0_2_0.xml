@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.curiosityhealth:ls2sdk-0.2.0">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/ls2sdk-0.2.0.aar/aadddd8aec1bc86607112778f5125adc/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/ls2sdk-0.2.0.aar/aadddd8aec1bc86607112778f5125adc/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.curiosityhealth/ls2sdk/0.2.0/b510f057014bdb51a57fc3dc5f05ddfe4277eb6b/ls2sdk-0.2.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

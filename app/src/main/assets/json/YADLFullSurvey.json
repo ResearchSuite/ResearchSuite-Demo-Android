@@ -11,8 +11,8 @@
       {
         "identifier"   : "introduction",
         "type"         : "instruction",
-        "title"        : "Welcome to the YADL Full Assessment",
-        "text"         : "Please rate each activity as \nEasy, Moderate, or Hard"
+        "title"        : "Welcome to the FACT-P Survey",
+        "text"         : "Over the past week, please rate how much the following activities have applied to you."
       },
       {
         "identifier": "yadl_full",

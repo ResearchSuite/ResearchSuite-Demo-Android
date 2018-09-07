@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: org.researchstack:backbone-1.1.2">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/backbone-1.1.2.aar/9729c74ad6bd1602e089c85be9a3be10/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/backbone-1.1.2.aar/9729c74ad6bd1602e089c85be9a3be10/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.researchstack/backbone/1.1.2/be8429c81923edb04b8a220c272a27771a3feba3/backbone-1.1.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
