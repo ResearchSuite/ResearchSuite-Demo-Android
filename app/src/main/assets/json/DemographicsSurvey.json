@@ -8,61 +8,60 @@
     "identifier": "demographics_list",
     "elements"   : [
       {
-        "identifier": "SOB",
+        "identifier": "treatStart",
         "type": "singleChoiceText",
-        "text": "Were you short of breath?",
+        "text": "Have you started any treatments since [survey date]?",
         "items": [
           {
-            "prompt": "Not at all",
+            "prompt": "No",
             "value": "0"
           },
           {
-            "prompt": "Very Little",
+            "prompt": "Yes",
             "value": "1"
-          },
-          {
-            "prompt": "Quite a Bit",
-            "value": "2"
-          },
-          {
-            "prompt": "Very much",
-            "value": "3"
           }
         ]
       },
       {
-        "identifier": "activites",
+        "identifier": "treatChange",
         "type": "singleChoiceText",
-        "text": "Were you limited in pursuing your hobbies or other leisure time activities?",
+        "text": "Have there been any changes in your treatments since [survey date]?",
         "items": [
           {
-            "prompt": "Not at all",
+            "prompt": "No",
             "value": "0"
           },
           {
-            "prompt": "Very Little",
+            "prompt": "Yes",
             "value": "1"
-          },
-          {
-            "prompt": "Quite a Bit",
-            "value": "2"
-          },
-          {
-            "prompt": "Very much",
-            "value": "3"
           }
         ]
       },
-//      {
-//        "identifier": "age",
-//        "type": "numericInteger",
-//        "text": "What is your age?",
-//        "range": {
-//          "min": 18,
-//          "max": 99,
-//          "unitLabel": "years"
-//        }
-//      },
+      {
+        "identifier": "treatEnd",
+        "type": "singleChoiceText",
+        "text": "Have you stopped any treatments since [survey date]?",
+        "items": [
+          {
+            "prompt": "No",
+            "value": "0"
+          },
+          {
+            "prompt": "Yes",
+            "value": "1"
+          }
+        ]
+      },
+      //      {
+      //        "identifier": "age",
+      //        "type": "numericInteger",
+      //        "text": "What is your age?",
+      //        "range": {
+      //          "min": 18,
+      //          "max": 99,
+      //          "unitLabel": "years"
+      //        }
+      //      },
       {
         "identifier": "zip_code",
         "type": "textfield",
@@ -72,36 +71,39 @@
       }
     ]
   },
-    "resultTransforms":[
+  "resultTransforms":[
     {
-    "transform":"SurveyResult",
-    "inputMapping":[
-      {
-        "stepIdentifier":"SOB",
-        "parameter":"SOB"
-      },
-      {
-        "stepIdentifier":"age",
-        "parameter":"age"
-      },
-      {
-        "stepIdentifier":"zip_code",
-        "parameter":"zip_code"
-      },
-      {
-        "parameter": "schemaID",
-        "constant": {
-          "namespace": "Cornell",
-          "name": "rs-survey",
-          "version": "1.0.0"
+      "transform":"SurveyResult",
+      "inputMapping":[
+        {
+          "stepIdentifier":"treatStart",
+          "parameter":"treatStart"
+        },
+        {
+          "stepIdentifier":"treatChange",
+          "parameter":"treatChange"
+        },
+        {
+          "stepIdentifier":"treatEnd",
+          "parameter":"treatEnd"
+        },
+        {
+          "stepIdentifier":"zip_code",
+          "parameter":"zip_code"
+        },
+        {
+          "parameter": "schemaID",
+          "constant": {
+            "namespace": "Cornell",
+            "name": "rs-survey",
+            "version": "1.0.0"
+          }
         }
-      }
-    ]
+      ]
     }
-    ]
+  ]
 
 }
-
 
 
 
